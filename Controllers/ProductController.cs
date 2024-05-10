@@ -33,28 +33,7 @@ namespace INV_APPLICATION.Controllers
             return View(ProductGot);
         }
 
-        [HttpPost]
-        public ActionResult Filtrar(string texto)
-        {
-            // Filtrar los productos cuyo nombre contenga el texto proporcionado
-            var productosFiltrados = _Context.TbProduct
-                .Where(p => p.ProductName.Contains(texto)).Select(p => p.ProductName).ToList();
-
-            // Devolver los nombres de los productos filtrados en formato JSON
-            return Json(productosFiltrados);
-        }
-
-
-        [HttpPost]
-        public ActionResult Buscar(string texto)
-        {
-            // Filtrar los productos cuyo nombre contenga el texto proporcionado
-            var productosFiltrados = _Context.TbProduct.FirstOrDefault(x=>x.ProductCode=="000028");
-
-            // Devolver los nombres de los productos filtrados en formato JSON
-            return Json(productosFiltrados);
-        }
-
+        
         // GET: ProductController1/Create
         public ActionResult Create()
         {
