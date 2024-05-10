@@ -1,0 +1,62 @@
+﻿@model IEnumerable<INV_APPLICATION.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>Index</h1>
+<div class="m-3">
+    <p>
+        <a asp-action="Create" class="btn btn-success">Agregar un nuevo cliente</a>
+    </p>
+    <div class="table-responsive">
+        <table id="myTable" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FullName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Zone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CellPhone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.NIF)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedAt)
+                    </th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr onclick="window.location.href='@Url.Action("Details", "Customer", new { id = item.Id })';"
+                      style="cursor:pointer;"
+                        onmouseover="this.style.backgroundColor='#D5F0C1';"
+                      onmouseout="this.style.backgroundColor='#fff';">
+                        <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Zone.Province)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CellPhone)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NIF)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+                   
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

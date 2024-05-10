@@ -1,0 +1,82 @@
+﻿@model IEnumerable<INV_APPLICATION.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Products</h1>
+
+
+<div class="m-3">
+    <p>
+        <a asp-action="Create" class="btn btn-success">Agregar un nuevo Producto</a>
+    </p>
+
+    <div class="table-responsive table-hover" >
+        <table id="myTableProduct" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Stock)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedAt)
+                    </th>
+           
+                    <th>
+                       Imagen Producto
+                    </th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr onclick="window.location.href='@Url.Action("Details", "Product", new { id = item.Id })';"
+                        style="cursor:pointer;"
+                        onmouseover="this.style.backgroundColor='#D5F0C1';"
+                        onmouseout="this.style.backgroundColor='#fff';">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Stock)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedAt)
+                        </td>
+                        <td>
+
+                            <img src="@(WC.ImagenRuta+"/"+item.ImgUrl)" style="border-radius: 5px; border: 1px solid #bbb; width: 100px; height:100px;">
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal -->
+<!-- Modal -->
+

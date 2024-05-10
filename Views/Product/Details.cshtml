@@ -1,0 +1,77 @@
+﻿@model INV_APPLICATION.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Details</h1>
+
+<div class="card m-3 p-3">
+<div>
+    <h4>Product</h4>
+    <hr />
+   <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="row">
+                <dt class="col-sm-4">Nombre del Producto:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.ProductName)</dd>
+                
+                <dt class="col-sm-4">Precio:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Price)</dd>
+                
+                <dt class="col-sm-4">Descripción:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Description)</dd>
+
+                <dt class="col-sm-4">Stock:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Stock)</dd>
+
+                <dt class="col-sm-4">Creado en:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.CreatedAt)</dd>
+            </dl>
+        </div>
+
+                <div class="col-md-6" style="display: flex; flex-direction: column; align-items: center;">
+                    <img src="@Url.Content("~/"+WC.ImagenRuta + "/" + Model.ImgUrl)" style="border-radius: 5px; border: 1px solid #bbb; width: 200%; max-width: 200px; height: auto;" />
+                    <!-- Button trigger modal -->
+                    <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Ver imagen <i class="fas fa-expand-alt"></i>
+                    </a>
+                </div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div>
+
+
+    <a asp-action="Index" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Volver a la Lista
+    </a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">
+        <i class="fas fa-pencil-alt"></i> Editar
+    </a>
+
+    <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">
+        <i class="fas fa-trash-alt"></i> Eliminar
+    </a>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel" style=" margin-right: 10px; ">@Html.DisplayFor(model => model.ProductName)</h1>  <span style=" margin-right: 10px; ">  <strong>URL:  </strong>@(Model.ImgUrl)</span>    <span style=" margin-right: 10px; ">  <strong>Added: </strong>@(Model.CreatedAt)</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="display: flex; justify-content: center; align-items: center;">
+                <img src="@Url.Content("~/"+WC.ImagenRuta + "/" + Model.ImgUrl)" style="border-radius: 5px; border: 1px solid #bbb; max-width: 100%; max-height: 100%; object-fit: contain;" />
+
+            </div>
+        </div>
+    </div>
+</div>
